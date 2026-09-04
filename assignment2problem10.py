@@ -18,15 +18,14 @@ import subprocess
 validate_ip_script = "./validate_ip"
 validate_hostname_script = "./validate_hostname"
 send_pings_script = "./send_pings"
-arg1 = "hello"
 
-# Execute the shell script
-result = subprocess.run([validate_ip_script, arg1], capture_output=True, text=True)
+# Need to give 'send_pings' permissions
+import os
 
-# Access the script's output and exit code
-print("STDOUT:", result.stdout)
-print("STDERR:", result.stderr)
-print("Exit Code:", result.returncode)
+if os.path.exists(send_pings_script):
+    # os.stat().st_mode | 0o111 adds execute permission for User, Group, and Others
+    os.chmod(send_pings_script, os.stat(send_pings_script).st_mode | 0o111)
+
 
 
 
