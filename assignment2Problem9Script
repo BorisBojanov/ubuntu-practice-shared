@@ -1,0 +1,50 @@
+#!/bin/sh
+
+username="boop"
+echo "$username"
+file_name="$1"
+
+#program that receives a filename and offers the user a choice: count lines starting with # or remove them
+
+# Check if an argument was passed
+if [ -z "$1" ]; then 
+	echo "Usage: $0 <file_name>"
+	exit 1
+fi
+#check if argument is a file
+if [ ! -f "$1" ]; then
+    echo "Usage: $1 must be a file, not a directory."
+    exit 1
+fi
+
+# While loop so that user can 
+while [ "$username" = "boop" ]; do
+    # offer the user a choice: count lines starting with # or remove them
+    echo ""
+    echo "Please specify which action you would like to perform."
+    echo "1. Count lines starting with #"
+    echo "2. Remove lines starting with #. \nThis will not include lines that have spaces or tabs before the #."
+    echo "Press Any-Key to exit"
+    read -rp "Enter selection: " usr_input
+
+    case "$usr_input" in
+        1)
+            output=$(grep -c "^#" "$file_name")
+            echo "Now counting all lines starting with # in $file_name: $output"
+            ;;
+        2)
+            # sed command is special and likes its inputs untouched.
+            grep "^" "$file_name" > "original_$file_name"
+            output=$(sed -i '/^#/d' "$file_name") | 
+            echo "Now removing lines that start with # in $file_name: $output"
+            ;;
+        *)
+            # Make it so that the switch-case is inside a while loop and breaks if the user makes 
+            #   a good selection
+            username=$(whoami)
+            break
+            ;;
+    esac
+done
+
+exit 0
