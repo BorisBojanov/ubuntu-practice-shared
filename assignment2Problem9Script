@@ -1,10 +1,14 @@
 #!/bin/sh
 
+# Assignment2Problem9Script
+# Boris Bojanov
+# Sep 2026
+# Script receives a filename and offers the user a choice: count lines starting with # or remove them.
+
 username="boop"
 echo "$username"
 file_name="$1"
 
-#program that receives a filename and offers the user a choice: count lines starting with # or remove them
 
 # Check if an argument was passed
 if [ -z "$1" ]; then 

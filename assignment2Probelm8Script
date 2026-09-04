@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# Assignment2Problem8Script
+# Boris Bojanov
+# Sep 2026
+# Script checks checks if a specified dir exists, creates it if it does not and sends an email. 
+
 username=$(whoami)
 echo "$username"
 username="bbojanov1"
