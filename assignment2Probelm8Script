@@ -1,0 +1,32 @@
+#!/bin/sh
+
+username=$(whoami)
+echo "$username"
+username="bbojanov1"
+dir_name="$HOME/$1"
+
+# Check if an argument was passed
+if [ -z "$1" ]; then 
+	echo "Usage: $0 <directory_name>"
+	exit 1
+fi
+
+# Check if directory exists and is valid
+if [ -d "$dir_name" ]; then
+	echo "Success: '$dir_name' is a directory."
+	echo "Looking for content:"
+	ls -l "$dir_name"
+
+else
+	echo "Warning: '$dir_name' does not exist or is not a directory. Creating it..."
+
+	if mkdir "$dir_name"; then 
+		echo "Made directory '$dir_name' "
+		echo "Directory '$dir_name' was created in your home directory. " | mail -s "Directory Modification Notice" "${username}@learn.athabascau.ca"
+	else
+		echo "Error: Failed to create directory '$dir_name'. Permission denied or invalid path."
+		exit 1
+		fi
+
+fi
+exit 0
