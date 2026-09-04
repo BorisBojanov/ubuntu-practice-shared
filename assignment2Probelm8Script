@@ -7,7 +7,6 @@
 
 username=$(whoami)
 echo "$username"
-username="bbojanov1"
 dir_name="$HOME/$1"
 
 # Check if an argument was passed

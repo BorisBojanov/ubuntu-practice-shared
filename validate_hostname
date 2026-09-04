@@ -1,0 +1,13 @@
+#!/bin/sh
+
+local hostname = "$1"
+
+# use 'getnet' or 'host' to verify hostname
+
+if host "$hostname" > /dev/null 2>&1; then
+    return 0
+else 
+    return 1
+fi
+
+

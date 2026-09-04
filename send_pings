@@ -1,0 +1,12 @@
+#! /bin/sh
+
+
+if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "Usage: $0 <ip_or_hostname> <number_of_times>"
+    exit 1
+fi
+
+local i="$1"
+local target="$2"
+
+ping -c "$i" "$target"
