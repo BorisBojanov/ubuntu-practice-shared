@@ -6,7 +6,7 @@ if [ -z "$1" ] || [ -z "$2" ]; then
     exit 1
 fi
 
-local i="$1"
-local target="$2"
+i="$1"
+target="$2"
 
 ping -c "$i" "$target"

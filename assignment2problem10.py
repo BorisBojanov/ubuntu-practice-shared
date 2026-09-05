@@ -46,7 +46,7 @@ def number(n):
     # an integer N between 10 and 100 
     num = 0
     try:
-        if type(n) == str():
+        if isinstance(n, str):
             num = int(n)
     except Exception as e:
         print(f"The thing broken: {e}")
