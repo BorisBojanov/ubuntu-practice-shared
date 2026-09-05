@@ -1,4 +1,3 @@
-
 """
 modify the code to receive two inputs: 
 
@@ -19,13 +18,10 @@ validate_ip_script = "./validate_ip"
 validate_hostname_script = "./validate_hostname"
 send_pings_script = "./send_pings"
 
-# Need to give 'send_pings' permissions
 import os
-
-if os.path.exists(send_pings_script):
-    # os.stat().st_mode | 0o111 adds execute permission for User, Group, and Others
-    os.chmod(send_pings_script, os.stat(send_pings_script).st_mode | 0o111)
-
+for script in [validate_ip_script, validate_hostname_script, send_pings_script]:
+    if os.path.exists(script):
+        os.chmod(script, os.stat(script).st_mode | 0o111)
 
 
 
@@ -99,9 +95,8 @@ def ipaddres(ip: str):
             return ip
         else:
             return 0
-
-    finally: 
-        print(f"Bruhhhh {Exception}")
+    except Exception as e:
+        print(f"Error in ipaddres: {e}")
         return 0
 
 def ipAddrAction():
@@ -132,7 +127,7 @@ fnumlab = mkgrid(0, 0, Label(root, text="Number of Pings (N)", anchor='e', bg=ma
 fnum = mkgrid(0, 1, Entry(root, bg=mainbg))
 foutnum = mkgrid(0, 2, Label(root, text="", relief='sunken', anchor='e', bg=mainbg))
 
-faddrlab = mkgrid(1, 0, Label(root, text="IP Address ()/ Hostname", anchor='e', bg=mainbg))
+faddrlab = mkgrid(1, 0, Label(root, text="IP Address (100.65.14.60)/ Hostname (localhost)", anchor='e', bg=mainbg))
 faddr = mkgrid(1, 1, Entry(root, bg=mainbg))
 foutaddr = mkgrid(1, 2, Label(root, text="", relief='sunken', anchor='e', bg=mainbg))
 
