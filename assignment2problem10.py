@@ -113,7 +113,7 @@ def execute_ping():
         userNum = str(numberAction()) # number or 0
 
         result = subprocess.run([send_pings_script, userNum, ip], capture_output=True, text=True, check=True)
-
+        print(result.stdout)
     except subprocess.CalledProcessError as e:
         print(f"Error executing ping: {e}")
     except Exception as e:
