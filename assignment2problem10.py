@@ -1,4 +1,8 @@
 """
+Assignment 2 Problem 10
+Boris Bojanov
+Sep 2026
+
 modify the code to receive two inputs: 
 
 (1) an integer N between 10 and 100 and 
