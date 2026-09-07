@@ -20,7 +20,8 @@ if ( -e ~/.login ) then
     set loginfile = ~/.login
     set outlog = ( `grep "^" "$loginfile"` )
     echo "This is the contents of ~/.login: $outlog"
-
+    echo ""
+    # printenv
 else
     echo "Could not find ~/.login"
 endif
@@ -34,6 +35,8 @@ if ( -e ~/.cshrc ) then
     set cshrcfile = ~/.cshrc
     set outcsh = ( `grep "^" "$cshrcfile"` )
     echo "This is the contents of ~/.cshrc: $outcsh"
+    echo ""
+    printenv
 else
     echo "Could not find ~/.cshrc"
 endif
